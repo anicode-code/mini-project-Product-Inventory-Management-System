@@ -35,8 +35,73 @@ void display() // for debug purpose
     }
 }
 
+Product *create()
+{
+    Product *newnode = (Product *)malloc(sizeof(Product));
+    newnode->prev = NULL;
+    newnode->next = NULL;
+    return newnode;
+}
+
+Product *insert()
+{
+    Product *temp = head;
+    // Product* newnode=(Product*)malloc(sizeof(Product));
+    // newnode->prev=NULL;
+    // newnode->next=NULL;
+    Product *newnode = create();
+
+    printf("\n\nenter ID:");
+    scanf("%d", &newnode->productId);
+    printf("enter name:");
+    scanf("%s", newnode->name);
+    printf("enter category:");
+    scanf("%s", newnode->category);
+    printf("enter price:");
+    scanf("%f", &newnode->price);
+    printf("enter stock:\n");
+    scanf("%d", &newnode->stock);
+
+    if (!head)
+    {
+        head = newnode;
+    }
+    else
+    {
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+        newnode->prev = temp;
+    }
+    // printf("successfully inserted\n\n");
+    // print();
+    return head;
+}
+Product *revdll()
+{
+    Product *temp, *curr;
+    temp = NULL;
+    curr = head;
+    while (curr != NULL)
+    {
+        temp = curr->prev;
+        curr->prev = curr->next;
+        curr->next = temp;
+        curr = curr->prev;
+    }
+    if (temp != NULL)
+    {
+        head = temp->prev;
+    }
+    // printf("\nsuccessfully reversed \n\n");
+    print();
+    return head;
+}
+
 int main()
 {
-    
+
     return 0;
 }
