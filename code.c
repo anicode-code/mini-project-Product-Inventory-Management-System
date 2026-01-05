@@ -131,6 +131,6 @@ void updateProduct(struct Product* head, int id) {
 
 int main()
 {
-
+    
     return 0;
 }
