@@ -99,6 +99,35 @@ Product *revdll()
     print();
     return head;
 }
+struct Product* searchProduct(struct Product* head, int id) {
+    struct Product* temp = head;
+
+    while (temp != NULL) {
+        if (temp->productId == id)
+            return temp;
+        temp = temp->next;
+    }
+
+    return NULL;
+}
+
+void updateProduct(struct Product* head, int id) {
+    struct Product* p = searchProduct(head, id);
+
+    if (p == NULL) {
+        printf("Product not found!\n");
+    } else {
+        printf("Product Found: %s\n", p->name);
+
+        printf("Enter new price: ");
+        scanf("%f", &p->price);
+
+        printf("Enter new stock: ");
+        scanf("%d", &p->stock);
+
+        printf("Product updated successfully!\n");
+    }
+}
 
 int main()
 {
