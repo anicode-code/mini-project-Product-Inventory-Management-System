@@ -5,16 +5,26 @@
 typedef struct Product
 {
     struct Product *prev, *next;
-    int productId;
+    int id;
     char name[100];
     char category[100];
     float price;
     int stock;
 } Product;
 
-Product *head = NULL;
+Product *head = NULL, *tail = NULL;
+FILE *fp = NULL;
 
-void display() // for debug purpose
+void displayEachProduct(Product *product)
+{
+    printf("Product ID : %d\n", product->id);
+    printf("Name       : %s\n", product->name);
+    printf("Category   : %s\n", product->category);
+    printf("Price      : %g\n", product->price);
+    printf("Stock      : %d\n\n", product->stock);
+}
+
+void traverseForward()
 {
     Product *temp = head;
     if (head == NULL)
@@ -26,12 +36,25 @@ void display() // for debug purpose
     printf("\n```````````````````\n");
     while (temp != NULL)
     {
-        printf("Product ID : %d\n", temp->productId);
-        printf("Name       : %s\n", temp->name);
-        printf("Category   : %s\n", temp->category);
-        printf("Price      : %g\n", temp->price);
-        printf("Stock      : %d\n\n", temp->stock);
+        displayEachProduct(temp);
         temp = temp->next;
+    }
+}
+
+void traverseBackward()
+{
+    Product *temp = tail;
+    if (tail == NULL)
+    {
+        printf("\nNo products available.\n");
+        return;
+    }
+    printf("\nProducts available:");
+    printf("\n```````````````````\n");
+    while (temp != NULL)
+    {
+        displayEachProduct(temp);
+        temp = temp->prev;
     }
 }
 
@@ -43,47 +66,87 @@ Product *create()
     return newnode;
 }
 
-Product *insert()
+void insertProduct()
 {
-    Product *temp = head;
-    // Product* newnode=(Product*)malloc(sizeof(Product));
-    // newnode->prev=NULL;
-    // newnode->next=NULL;
     Product *newnode = create();
 
-    printf("\n\nenter ID:");
-    scanf("%d", &newnode->productId);
-    printf("enter name:");
-    scanf("%s", newnode->name);
-    printf("enter category:");
-    scanf("%s", newnode->category);
-    printf("enter price:");
+    printf("\n\nEnter ID: ");
+    scanf("%d", &newnode->id);
+    printf("Enter name: ");
+    scanf(" %99[^\n]", newnode->name);
+    printf("Enter category: ");
+    scanf(" %99[^\n]", newnode->category);
+    printf("Enter price: ");
     scanf("%f", &newnode->price);
-    printf("enter stock:\n");
+    printf("Enter stock: ");
     scanf("%d", &newnode->stock);
 
-    if (!head)
+    if (head == NULL)
     {
-        head = newnode;
+        head = tail = newnode;
     }
     else
     {
-        while (temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-        newnode->prev = temp;
+        tail->next = newnode;
+        newnode->prev = tail;
+        tail = newnode;
     }
-    // printf("successfully inserted\n\n");
-    // print();
-    return head;
 }
-Product *revdll()
+
+void insertProductFromFile()
 {
-    Product *temp, *curr;
-    temp = NULL;
-    curr = head;
+
+    if (fp == NULL)
+    {
+        fp = fopen("data.txt", "r");
+        if (!fp)
+        {
+            printf("\nUnable to open data.txt\n");
+            return;
+        }
+        char header[256];
+        fgets(header, sizeof(header), fp);
+    }
+
+    Product *newnode = create();
+
+    if (fscanf(fp, "%d,%99[^,],%99[^,],%f,%d",
+               &newnode->id,
+               newnode->category,
+               newnode->name,
+               &newnode->price,
+               &newnode->stock) != 5)
+    {
+        printf("\nNo more records in file.\n");
+        free(newnode);
+        fclose(fp);
+        fp = NULL;
+        return;
+    }
+
+    if (head == NULL)
+    {
+        head = tail = newnode;
+    }
+    else
+    {
+        tail->next = newnode;
+        newnode->prev = tail;
+        tail = newnode;
+    }
+
+    printf("\nProduct inserted from file successfully.\n");
+}
+
+void reverseDLL()
+{
+    if (!head || !head->next)
+    {
+        printf("\nDLL reversed successfully!\n");
+        return;
+    }
+    Product *temp = NULL, *curr = head;
+    tail = head;
     while (curr != NULL)
     {
         temp = curr->prev;
@@ -91,53 +154,51 @@ Product *revdll()
         curr->next = temp;
         curr = curr->prev;
     }
-    if (temp != NULL)
-    {
-        head = temp->prev;
-    }
-    // printf("\nsuccessfully reversed \n\n");
-    print();
-    return head;
+    head = temp->prev;
+    printf("\nDLL reversed successfully!\n");
 }
-struct Product* searchProduct(struct Product* head, int id) {
-    struct Product* temp = head;
 
-    while (temp != NULL) {
-        if (temp->productId == id)
+Product *searchProduct(int id)
+{
+    Product *temp = head;
+    while (temp != NULL)
+    {
+        if (temp->id == id)
             return temp;
         temp = temp->next;
     }
-
     return NULL;
 }
 
-void updateProduct(struct Product* head, int id) {
-    struct Product* p = searchProduct(head, id);
-
-    if (p == NULL) {
-        printf("Product not found!\n");
-    } else {
+void updateProduct(int id)
+{
+    Product *p = searchProduct(id);
+    if (p == NULL)
+    {
+        printf("\nProduct not found!\n");
+    }
+    else
+    {
         printf("Product Found: %s\n", p->name);
-
         printf("Enter new price: ");
         scanf("%f", &p->price);
-
         printf("Enter new stock: ");
         scanf("%d", &p->stock);
-
         printf("Product updated successfully!\n");
     }
 }
 
-Product* deleteProduct(struct Product *head, int id) {
-    struct Product *temp = head;
+void deleteProduct(int id)
+{
+    Product *temp = head;
 
-    while (temp != NULL && temp->productId != id)
+    while (temp != NULL && temp->id != id)
         temp = temp->next;
 
-    if (temp == NULL) {
-        printf("Product not found!\n");
-        return head;
+    if (temp == NULL)
+    {
+        printf("\nProduct not found!\n");
+        return;
     }
 
     if (temp->prev != NULL)
@@ -147,30 +208,81 @@ Product* deleteProduct(struct Product *head, int id) {
 
     if (temp->next != NULL)
         temp->next->prev = temp->prev;
+    else
+        tail = temp->prev;
 
     free(temp);
-    printf("Product deleted successfully.\n");
-
-    return head;
+    printf("\nProduct deleted successfully.\n");
 }
 
-void display() {
-    struct Product *temp = head;
-    if (temp == NULL) {
-        printf("List is empty.\n");
-        return;
-    }
-
-    while (temp != NULL) {
-        printf("ID:%d Name:%s Category:%s Price:%.2f Stock:%d\n",
-               temp->productId, temp->name, temp->category,
-               temp->price, temp->stock);
-        temp = temp->next;
-    }
+void accept(int *id)
+{
+    printf("\nEnter Product ID: ");
+    scanf("%d", id);
 }
 
 int main()
 {
-    
+    int choice, id;
+    do
+    {
+        printf("\nPRODUCT INVENTORY MENU\n");
+        printf("1. Insert Random Product\n");
+        printf("2. Insert Product\n");
+        printf("3. Delete Product\n");
+        printf("4. Update Price/Stock\n");
+        printf("5. Search Product\n");
+        printf("6. Traverse Forward\n");
+        printf("7. Traverse Backward\n");
+        printf("8. Reverse DLL\n");
+        printf("9. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            insertProductFromFile();
+            break;
+        case 2:
+            insertProduct();
+            break;
+        case 3:
+            accept(&id);
+            deleteProduct(id);
+            break;
+        case 4:
+            accept(&id);
+            updateProduct(id);
+            break;
+        case 5:
+        {
+            accept(&id);
+            Product *p = searchProduct(id);
+            if (p)
+            {
+                printf("Product found.\n");
+                displayEachProduct(p);
+            }
+            else
+                printf("\nProduct not found!\n");
+            break;
+        }
+        case 6:
+            traverseForward();
+            break;
+        case 7:
+            traverseBackward();
+            break;
+        case 8:
+            reverseDLL();
+            break;
+        case 9:
+            printf("Exiting...\n");
+            break;
+        default:
+            printf("Invalid choice!\n");
+        }
+    } while (choice != 9);
     return 0;
 }
