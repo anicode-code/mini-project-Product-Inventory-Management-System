@@ -129,6 +129,46 @@ void updateProduct(struct Product* head, int id) {
     }
 }
 
+Product* deleteProduct(struct Product *head, int id) {
+    struct Product *temp = head;
+
+    while (temp != NULL && temp->productId != id)
+        temp = temp->next;
+
+    if (temp == NULL) {
+        printf("Product not found!\n");
+        return head;
+    }
+
+    if (temp->prev != NULL)
+        temp->prev->next = temp->next;
+    else
+        head = temp->next;
+
+    if (temp->next != NULL)
+        temp->next->prev = temp->prev;
+
+    free(temp);
+    printf("Product deleted successfully.\n");
+
+    return head;
+}
+
+void display() {
+    struct Product *temp = head;
+    if (temp == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    while (temp != NULL) {
+        printf("ID:%d Name:%s Category:%s Price:%.2f Stock:%d\n",
+               temp->productId, temp->name, temp->category,
+               temp->price, temp->stock);
+        temp = temp->next;
+    }
+}
+
 int main()
 {
     
