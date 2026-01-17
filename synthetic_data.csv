@@ -1,0 +1,44 @@
+id,name,category,price,stock
+1,Ball Pen Blue,Pens,10,500
+2,Ball Pen Black,Pens,10,500
+3,Gel Pen Blue,Pens,25,300
+4,Gel Pen Black,Pens,25,300
+5,Fountain Pen,Pens,250,50
+6,Mechanical Pencil 0.5mm,Pencils,40,200
+7,Wooden Pencil HB,Pencils,5,1000
+8,Colored Pencils Set,Pencils,120,80
+9,Highlighter Yellow,Markers,35,150
+10,Permanent Marker Black,Markers,40,120
+11,A4 Notebook 200 Pages,Notebooks,120,200
+12,A5 Notebook 100 Pages,Notebooks,60,300
+13,Drawing Book,Notebooks,90,150
+14,Sticky Notes Small,Paper,30,400
+15,Sticky Notes Large,Paper,60,250
+16,A4 Copier Paper (500 sheets),Paper,320,100
+17,Graph Paper Pad,Paper,70,150
+18,Stapler Small,Office Tools,90,100
+19,Stapler Pins No.10,Office Tools,30,300
+20,Paper Clip Box,Office Tools,40,200
+21,Binder Clips Set,Office Tools,60,150
+22,Punching Machine,Office Tools,180,60
+23,Scissors 6 inch,Office Tools,110,90
+24,Crayons Set 24,Art Supplies,150,80
+25,Water Colors Set,Art Supplies,180,70
+26,Poster Colors Set,Art Supplies,200,60
+27,Paint Brush Set,Art Supplies,130,90
+28,Sketch Pens Set,Art Supplies,160,100
+29,Geometry Box,Geometry,120,150
+30,Scale 30cm,Geometry,20,400
+31,Protractor,Geometry,15,350
+32,Compass,Geometry,25,300
+33,Calculator Basic,Electronics,350,70
+34,Calculator Scientific,Electronics,850,40
+35,Plastic File Folder,Files,25,500
+36,Ring Binder File,Files,120,120
+37,Expanding File Folder,Files,180,90
+38,Document Envelope,Files,20,300
+39,Eraser Small,Accessories,5,800
+40,Sharpener,Accessories,10,600
+41,Correction Pen,Accessories,35,200
+42,Glue Stick,Accessories,30,250
+43,Adhesive Tape,Accessories,25,300

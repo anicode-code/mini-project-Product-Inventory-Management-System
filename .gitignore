@@ -1,8 +1,2 @@
-*
-!*/
-!*.*
-*.exe
-b.c
-d.txt
-data.txt
-data.csv
+node_modules/
+package-lock.json
