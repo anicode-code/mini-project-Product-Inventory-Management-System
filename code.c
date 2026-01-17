@@ -98,10 +98,10 @@ void insertProductFromFile()
 
     if (fp == NULL)
     {
-        fp = fopen("data.txt", "r");
+        fp = fopen("data.csv", "r");
         if (!fp)
         {
-            printf("\nUnable to open data.txt\n");
+            printf("\nUnable to open data.csv\n");
             return;
         }
         char header[256];
@@ -227,7 +227,7 @@ int main()
     do
     {
         printf("\nPRODUCT INVENTORY MENU\n");
-        printf("1. Insert Random Product\n");
+        printf("1. Insert Random Product From File\n");
         printf("2. Insert Product\n");
         printf("3. Delete Product\n");
         printf("4. Update Price/Stock\n");
