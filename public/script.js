@@ -2,8 +2,12 @@ const API_URL = 'http://localhost:3000/api';
 let isReverse = false;
 
 // Initialization
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     loadProducts();
+
+    // ... rest of the code
 
     // Add Product Form Listener
     document.getElementById('add-product-form').addEventListener('submit', async (e) => {
@@ -271,5 +275,59 @@ function showToast(message, type = 'success') {
 window.onclick = function (event) {
     if (event.target == document.getElementById('edit-modal')) {
         closeModal();
+    }
+}
+
+// Theme Management
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const isLight = savedTheme === 'light';
+
+    if (isLight) {
+        document.body.classList.add('light-mode');
+        const icon = document.querySelector('#theme-toggle i');
+        if (icon) icon.className = 'fa-solid fa-moon';
+    } else {
+        document.body.classList.remove('light-mode');
+        const icon = document.querySelector('#theme-toggle i');
+        if (icon) icon.className = 'fa-solid fa-sun'; // Fixed icon name
+    }
+}
+
+function toggleTheme() {
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    const icon = document.querySelector('#theme-toggle i');
+    if (isLight) {
+        icon.className = 'fa-solid fa-moon';
+        showToast('Switched to Light Mode', 'success');
+    } else {
+        icon.className = 'fa-solid fa-sun';
+        showToast('Switched to Dark Mode', 'success');
+    }
+}
+
+// Mobile Sidebar
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const isActive = sidebar.classList.toggle('active');
+
+    // Close sidebar when clicking outside on mobile
+    if (isActive) {
+        document.addEventListener('click', closeSidebarOutside);
+    } else {
+        document.removeEventListener('click', closeSidebarOutside);
+    }
+}
+
+function closeSidebarOutside(e) {
+    const sidebar = document.querySelector('.sidebar');
+    const toggle = document.querySelector('.menu-toggle');
+
+    // Only close if click is NOT on sidebar and NOT on toggle
+    if (sidebar && !sidebar.contains(e.target) && toggle && !toggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        document.removeEventListener('click', closeSidebarOutside);
     }
 }

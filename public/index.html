@@ -38,9 +38,17 @@
         <main class="main-content">
             <header class="top-bar">
                 <h1 id="page-title">Dashboard</h1>
-                <div class="search-bar" id="search-container">
-                    <i class="fa-solid fa-search"></i>
-                    <input type="text" id="search-input" placeholder="Search products...">
+                <div class="header-actions">
+                    <div class="search-bar" id="search-container">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search products...">
+                    </div>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle Theme" onclick="toggleTheme()">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </header>
 
