@@ -7,14 +7,23 @@ typedef struct
 {
     int id;
     char name[50];
-    char category[10];
+    char category[50];
     float price;
     int stock;
 } Product;
 
 /* Category codes */
 const char *categories[] = {
-    "ABC", "ACY", "ELC", "GAM", "NET", "OFF"};
+     "Electronics",
+  "Electronics",
+  "Home Appliances",
+  "Home Appliances",
+  "Stationery",
+  "Stationery",
+  "Fashion",
+  "Fashion",
+  "Groceries",
+  "Groceries"};
 
 #define CAT_COUNT (sizeof(categories) / sizeof(categories[0]))
 
@@ -61,14 +70,14 @@ int main()
         return 1;
     }
 
-    fprintf(fp, "ID,Category,Name,Price,Stock\n");
+    fprintf(fp, "ID,Name,Category,Price,Stock\n");
 
     for (int i = 0; i < n; i++)
     {
         Product p = generateProduct(1001 + i);
 
         fprintf(fp, "%d,%s,%s,%.2f,%d\n",
-                p.id, p.category, p.name, p.price, p.stock);
+                p.id, p.name, p.category, p.price, p.stock);
     }
 
     fclose(fp);

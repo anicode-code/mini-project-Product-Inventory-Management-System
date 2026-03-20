@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory Management System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-cube"></i> Invento<span></span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                    <i class="fa-solid fa-chart-line"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('add-product')">
+                    <i class="fa-solid fa-plus"></i> Add Product
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('blockchain')">
+                    <i class="fa-solid fa-link"></i> Blockchain Ledger
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="header-actions">
+                    <div class="search-bar" id="search-container">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search products...">
+                    </div>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle Theme" onclick="toggleTheme()">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="loadProducts(false)" title="Refresh">
+                        <i class="fa-solid fa-sync"></i> Refresh
+                    </button>
+                    <button class="btn btn-outline" onclick="toggleSortOrder()" id="sort-btn">
+                        <i class="fa-solid fa-sort"></i> Reverse View
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-list">
+                            <!-- Products will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add Product Section -->
+            <section id="add-product" class="content-section">
+                <div class="form-card">
+                    <h2>Add New Product</h2>
+                    <form id="add-product-form">
+                        <div class="form-group">
+                            <label>Product ID</label>
+                            <input type="number" id="prod-id" required placeholder="e.g. 101">
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="prod-name" required placeholder="Product Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <input type="text" id="prod-category" required placeholder="Category">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Price (Rs.)</label>
+                                <input type="number" id="prod-price" step="0.01" required placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label>Stock</label>
+                                <input type="number" id="prod-stock" required placeholder="0">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Blockchain Section -->
+            <section id="blockchain" class="content-section">
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="verifyChain()">
+                        <i class="fa-solid fa-shield-halved"></i> Verify Integrity
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadBlockchain()">
+                        <i class="fa-solid fa-sync"></i> Refresh Chain
+                    </button>
+                </div>
+                <div id="blockchain-container" class="blockchain-timeline">
+                    <!-- Blocks go here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Update Product</h2>
+            <form id="edit-product-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>Product Name (Read Only)</label>
+                    <input type="text" id="edit-name" readonly disabled>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>New Price (Rs.)</label>
+                        <input type="number" id="edit-price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>New Stock</label>
+                        <input type="number" id="edit-stock" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
