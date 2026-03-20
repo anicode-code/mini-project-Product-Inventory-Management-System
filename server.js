@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 const PORT = 3000;
-const BINARY_PATH = path.join(__dirname, 'logic');
+const BINARY_PATH = path.join(__dirname, 'logic.exe');
 
 app.use(cors());
 app.use(bodyParser.json());

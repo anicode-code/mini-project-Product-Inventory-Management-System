@@ -42,3 +42,147 @@ id,name,category,price,stock
 41,Correction Pen,Accessories,35,200
 42,Glue Stick,Accessories,30,250
 43,Adhesive Tape,Accessories,25,300
+
+
+1,USB Cable,electronics,5.99,120
+2,Wireless Mouse,electronics,14.49,85
+3,Keyboard,electronics,24.99,60
+4,HDMI Cable,electronics,8.99,150
+5,Power Bank,electronics,29.99,70
+6,Smartphone Charger,electronics,12.99,110
+7,LED Bulb,electronics,3.49,300
+8,Extension Cord,electronics,9.99,95
+9,Bluetooth Speaker,electronics,39.99,40
+10,Webcam,electronics,34.99,55
+11,Notebook A4,stationery,2.49,500
+12,Ball Pen Blue,stationery,0.49,1000
+13,Ball Pen Black,stationery,0.49,950
+14,Gel Pen,stationery,0.99,600
+15,Pencil HB,stationery,0.29,1200
+16,Eraser,stationery,0.19,900
+17,Sharpener,stationery,0.39,850
+18,Highlighter,stationery,1.29,400
+19,Sticky Notes,stationery,1.99,350
+20,Stapler,stationery,4.99,180
+21,Men T-Shirt,clothing,9.99,200
+22,Women T-Shirt,clothing,11.99,180
+23,Jeans Men,clothing,24.99,120
+24,Jeans Women,clothing,26.99,100
+25,Hoodie,clothing,29.99,90
+26,Jacket,clothing,49.99,60
+27,Socks Pair,clothing,2.99,500
+28,Cap,clothing,7.99,220
+29,Scarf,clothing,6.49,150
+30,Belt Leather,clothing,14.99,130
+31,Calculator,electronics,19.99,75
+32,Desk Lamp,electronics,22.49,65
+33,Monitor 24inch,electronics,149.99,30
+34,Laptop Backpack,electronics,39.99,55
+35,Headphones,electronics,27.99,80
+36,Flash Drive 32GB,electronics,9.49,200
+37,Flash Drive 64GB,electronics,14.99,140
+38,Router,electronics,59.99,35
+39,Wireless Keyboard,electronics,29.49,50
+40,Mouse Pad,electronics,3.99,300
+
+
+1,USB Type C Cable,Electronics,299,150
+2,Wireless Mouse,Electronics,599,85
+3,Bluetooth Keyboard,Electronics,1499,40
+4,32GB Pendrive,Electronics,449,120
+5,64GB Pendrive,Electronics,699,90
+6,128GB Pendrive,Electronics,1199,60
+7,Power Bank 10000mAh,Electronics,1999,55
+8,Power Bank 20000mAh,Electronics,2999,30
+9,LED Bulb 9W,Electronics,149,300
+10,LED Bulb 12W,Electronics,199,240
+11,Extension Board,Electronics,799,70
+12,Smartphone Earphones,Electronics,399,110
+13,Bluetooth Earbuds,Electronics,2499,35
+14,Smart Watch,Electronics,3499,25
+15,Calculator Scientific,Electronics,999,45
+16,Laptop Backpack,Electronics,1799,50
+17,HDMI Cable,Electronics,349,130
+18,Webcam HD,Electronics,2199,20
+19,Wireless Charger,Electronics,1599,40
+20,Mini Speaker,Electronics,1299,65
+21,Notebook A4 100 Pages,Stationery,80,400
+22,Notebook A4 200 Pages,Stationery,150,320
+23,Notebook A5 100 Pages,Stationery,60,500
+24,Ball Pen Blue,Stationery,10,2000
+25,Ball Pen Black,Stationery,10,1800
+26,Gel Pen Blue,Stationery,20,1200
+27,Gel Pen Black,Stationery,20,1100
+28,Pencil HB,Stationery,8,2500
+29,Eraser Small,Stationery,5,3000
+30,Sharpener,Stationery,7,2200
+31,Scale 30cm,Stationery,25,600
+32,Glue Stick,Stationery,35,450
+33,Highlighter Yellow,Stationery,45,350
+34,Whiteboard Marker,Stationery,60,280
+35,Stapler Small,Stationery,120,140
+36,Stapler Pins,Stationery,40,500
+37,Paper Clips Box,Stationery,50,320
+38,Sketch Pens Set,Stationery,199,180
+39,Color Pencils Set,Stationery,249,160
+40,Drawing Book,Stationery,90,260
+41,Men T-Shirt Cotton,Clothing,499,150
+42,Men Polo T-Shirt,Clothing,799,90
+43,Men Formal Shirt,Clothing,1199,60
+44,Men Casual Shirt,Clothing,999,75
+45,Men Jeans Regular Fit,Clothing,1499,50
+46,Men Jeans Slim Fit,Clothing,1699,45
+47,Men Shorts,Clothing,699,70
+48,Women T-Shirt,Clothing,499,140
+49,Women Kurti Cotton,Clothing,1299,65
+50,Women Kurti Printed,Clothing,1499,55
+51,Women Jeans,Clothing,1599,60
+52,Women Leggings,Clothing,499,120
+53,Women Saree Cotton,Clothing,1999,30
+54,Women Saree Silk,Clothing,3999,20
+55,Kids T-Shirt,Clothing,399,160
+56,Kids Shorts,Clothing,349,180
+57,Kids Frock,Clothing,699,90
+58,Winter Jacket Men,Clothing,2999,25
+59,Winter Jacket Women,Clothing,3299,20
+60,Socks Pair,Clothing,149,300
+61,Rice 5kg,Grocery,349,200
+62,Rice 10kg,Grocery,699,120
+63,Wheat Flour 5kg,Grocery,299,180
+64,Wheat Flour 10kg,Grocery,589,110
+65,Sugar 1kg,Grocery,49,400
+66,Sugar 5kg,Grocery,235,150
+67,Tea Powder 250g,Grocery,145,220
+68,Tea Powder 500g,Grocery,275,140
+69,Coffee Powder 200g,Grocery,199,90
+70,Sunflower Oil 1L,Grocery,149,160
+71,Sunflower Oil 5L,Grocery,699,80
+72,Mustard Oil 1L,Grocery,169,120
+73,Toor Dal 1kg,Grocery,189,130
+74,Chana Dal 1kg,Grocery,149,170
+75,Moong Dal 1kg,Grocery,169,140
+76,Turmeric Powder 200g,Grocery,49,300
+77,Red Chilli Powder 200g,Grocery,89,250
+78,Cumin Seeds 100g,Grocery,79,200
+79,Black Pepper 100g,Grocery,119,140
+80,Salt 1kg,Grocery,25,500
+81,Steel Water Bottle,Home & Kitchen,399,100
+82,Plastic Water Bottle,Home & Kitchen,149,180
+83,Lunch Box 3 Compartment,Home & Kitchen,499,75
+84,Non Stick Pan 24cm,Home & Kitchen,1299,40
+85,Pressure Cooker 3L,Home & Kitchen,2499,30
+86,Pressure Cooker 5L,Home & Kitchen,3299,25
+87,Steel Plate Set,Home & Kitchen,899,60
+88,Steel Spoon Set,Home & Kitchen,499,90
+89,Glass Tumbler Set,Home & Kitchen,349,120
+90,Kitchen Knife,Home & Kitchen,199,150
+91,Wall Clock,Home & Kitchen,799,55
+92,Door Mat,Home & Kitchen,349,70
+93,Bed Sheet Double,Home & Kitchen,999,40
+94,Pillow Cover Set,Home & Kitchen,399,85
+95,Blanket Single,Home & Kitchen,1499,35
+96,LED Table Lamp,Home & Kitchen,899,60
+97,Broom Stick,Home & Kitchen,199,200
+98,Dustbin Plastic,Home & Kitchen,299,140
+99,Mop Set,Home & Kitchen,899,50
+100,Room Freshener,Home & Kitchen,249,160
